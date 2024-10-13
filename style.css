@@ -5,14 +5,52 @@ html{
     height: 100%;
     margin: 0;
 }
-
+.font{
+    font-family: monospace;
+}
 header{
     text-align: center;
 }
 main{
     text-align: center;
+
+}
+
+main div {
+    text-align: right;
 }
 
 button{
     margin: 10px;
+    padding: 10px;
+    border-style:hidden;
+    background-color: red;
+    border-radius: 50px;
+    color: white;
+}
+
+#lista{
+    width: 500px;
+    height: 500px;
+    overflow: auto;
+    background-color: hsla(33, 100%, 88%, 0.316);
+    padding: 25px;
+    margin: 10px;
+    border-radius: 50px;
+    visibility: hidden;
+}
+
+.cont{
+    background-color: hsla(33, 100%, 88%, 0.316);
+    padding: 25px;
+    margin: 10px;
+    border-radius: 50px;
+}
+
+#contenitore{
+    display: flex;
+    
+    justify-content: flex-end;
+    visibility: hidden;
+
 }

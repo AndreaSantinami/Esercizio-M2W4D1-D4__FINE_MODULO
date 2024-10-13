@@ -85,10 +85,11 @@ const jobs = [
     },
 ]
 
-/* let lavoroTitolo = document.getElementById("input1").value
-let lavoroLuogo = document.getElementById("input2").value */
+let lavoroTitolo = document.getElementById("input1")
+let lavoroLuogo = document.getElementById("input2")
 
-function cerca(jobs, lavoroTitolo, lavoroLuogo) {
+
+function cerca(lavoroTitolo, lavoroLuogo) {
     //mi serve per salvarci tutti i lavori trovati e i luoghi 
     let titolo_lavoro = []
     let luogo_lavoro = []
@@ -96,34 +97,44 @@ function cerca(jobs, lavoroTitolo, lavoroLuogo) {
     /* let lista = document.getElementById("lista_lavori")
     let li = document.createElement("li") */
     //------------------------------------------------------
+    let Titolo = lavoroTitolo.value.toLowerCase()
+    let Luogo = lavoroLuogo.value.toLowerCase()
+    
+    if (Titolo === "" && Luogo === "") {
+        alert("Campi di ricerca non validi!")
+    } else {
+        for (let i = 0; i < jobs.length; i++) {
+            let lavoro = jobs[i];
+            document.getElementById("lista").style.visibility = "visible"
+            document.getElementById("contenitore").style.visibility = "visible"
 
-    for (let i = 0; i < jobs.length; i++) {
-        let lavoro = jobs[i];
+            //controllo se titolo e luogo ci sono dentro l'arrey creato in precedenza
+            if (lavoro.title.toLowerCase().includes(Titolo) && lavoro.location.toLowerCase().includes(Luogo)) {
+                let lista = document.getElementById("lista_lavori")
+                let li = document.createElement("li")
+                titolo_lavoro.push(lavoro.title)
+                luogo_lavoro.push(lavoro.location)
 
-        //controllo se titolo e luogo ci sono dentro l'arrey creato in precedenza
-        if (lavoro.title.toLowerCase().includes(lavoroTitolo.toLowerCase()) && lavoro.location.toLowerCase().includes(lavoroLuogo.toLowerCase())) {
-            let lista = document.getElementById("lista_lavori")
-            let li = document.createElement("li")
-            titolo_lavoro.push(lavoro.title)
-            luogo_lavoro.push(lavoro.location)
+                console.log("TITOLO LAVORO " + titolo_lavoro)
+                console.log("LUOGO LAVORO " + luogo_lavoro)
+                console.log("CONTEGGIO " + titolo_lavoro.length)
 
-            console.log("TITOLO LAVORO " + titolo_lavoro)
-            console.log("LUOGO LAVORO " + luogo_lavoro)
-            console.log("CONTEGGIO " + titolo_lavoro.length)
+                document.getElementById("conteggio").textContent=titolo_lavoro.length
 
-            li.innerHTML = "LAVORO - " + titolo_lavoro + "<br>"+ " LUOGO - " + luogo_lavoro
-            lista.appendChild(li)
+                li.innerHTML = "LAVORO - " + titolo_lavoro + "<br>" + " LUOGO - " + luogo_lavoro
+                lista.appendChild(li)
+            }
+
         }
     }
-
 }
-
+/* 
 let lavoroTitolo = "Customer";
 let lavoroLuogo = "US";
 let funzione = cerca(jobs, lavoroTitolo, lavoroLuogo)
 
 console.log(funzione)
-
+ */
 
 
 
